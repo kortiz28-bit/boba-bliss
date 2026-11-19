@@ -9,6 +9,14 @@ const flavorColors: Record<string, string> = {
   Matcha: '#A8C69F',
   Taro: '#C5B3E6',
 }
+
+const positions = [
+  { x: 62, y: 131 },
+  { x: 80, y: 134 },
+  { x: 98, y: 131 },
+  { x: 71, y: 119 },
+  { x: 89, y: 119 },
+]
 </script>
 
 <template>
@@ -37,28 +45,39 @@ const flavorColors: Record<string, string> = {
         stroke-width="2"
       />
 
-      <g v-if="drink.toppings.includes('Boba Pearls')" fill="#65403d">
-        <circle cx="62" cy="126" r="6" />
-        <circle cx="80" cy="130" r="6" />
-        <circle cx="98" cy="125" r="6" />
-        <circle cx="71" cy="113" r="6" />
-        <circle cx="91" cy="113" r="6" />
-      </g>
+      <g
+        v-for="(topping, index) in drink.toppings"
+        :key="topping"
+        :transform="`translate(0, ${-index * 25})`"
+      >
+        <g v-for="(position, i) in positions" :key="i">
+          <circle
+            v-if="topping === 'Boba Pearls'"
+            :cx="position.x"
+            :cy="position.y"
+            r="6"
+            fill="#65403d"
+          />
 
-      <g v-if="drink.toppings.includes('Popping Boba')" fill="#f6b34f">
-        <circle cx="60" cy="99" r="6" />
-        <circle cx="82" cy="99" r="6" />
-        <circle cx="100" cy="94" r="6" />
+          <circle
+            v-if="topping === 'Popping Boba'"
+            :cx="position.x"
+            :cy="position.y"
+            r="6"
+            fill="#f6b34f"
+          />
 
-        <circle cx="58" cy="97" r="2" fill="#ffe7b0" />
-        <circle cx="80" cy="97" r="2" fill="#ffe7b0" />
-        <circle cx="98" cy="92" r="2" fill="#ffe7b0" />
-      </g>
-
-      <g v-if="drink.toppings.includes('Jelly')" fill="#b6dda7" stroke="#8ab980">
-        <rect x="56" y="72" width="11" height="10" rx="2" />
-        <rect x="80" y="78" width="11" height="10" rx="2" />
-        <rect x="95" y="64" width="11" height="10" rx="2" />
+          <rect
+            v-if="topping === 'Jelly'"
+            :x="position.x - 5"
+            :y="position.y - 5"
+            width="10"
+            height="10"
+            rx="2"
+            fill="#b6dda7"
+            stroke="#8ab980"
+          />
+        </g>
       </g>
     </svg>
 
@@ -72,4 +91,3 @@ const flavorColors: Record<string, string> = {
     </p>
   </div>
 </template>
-

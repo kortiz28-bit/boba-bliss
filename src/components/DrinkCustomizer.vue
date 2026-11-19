@@ -43,7 +43,7 @@ const toppings = ['Boba Pearls', 'Popping Boba', 'Jelly']
       </div>
 
       <div>
-        <label for="ice" class="block font-medium mb-1">Ice Level</label>
+        <label for="ice" class="block font-medium mb-1">Ice</label>
         <select id="ice" v-model="drink.ice" class="w-full border rounded-lg p-2">
           <option v-for="ice in iceLevels" :key="ice">
             {{ ice }}

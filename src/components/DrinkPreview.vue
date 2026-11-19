@@ -15,30 +15,41 @@ const flavorColors: Record<string, string> = {
   <div class="bg-white rounded-2xl p-6 shadow-sm text-center">
     <h2 class="text-2xl font-bold mb-4">Your Drink</h2>
 
-    <div class="relative w-40 mx-auto mt-8 mb-6">
-      <div class="absolute -top-6 right-10 w-4 h-12 bg-pink-400 rounded-full"></div>
+    <svg viewBox="0 0 160 165" class="w-48 mx-auto">
+      <path
+        d="M93 22 L89 67"
+        stroke="#db7093"
+        stroke-width="12"
+        stroke-linecap="round"
+      />
 
-      <div
-        class="relative h-52 border-4 border-gray-200 rounded-b-3xl rounded-t-lg"
-        :style="{ backgroundColor: flavorColors[drink.flavor] }"
-      >
-        <div
-          v-if="drink.toppings.includes('Boba Pearls')"
-          class="absolute bottom-3 inset-x-0 flex justify-center gap-2"
-        >
-          <span
-            v-for="n in 5"
-            :key="n"
-            class="w-5 h-5 bg-amber-950 rounded-full"
-          ></span>
-        </div>
-      </div>
-    </div>
+      <path
+        d="M44 54 L116 54 L106 137 Q80 145 54 137 Z"
+        :fill="flavorColors[drink.flavor]"
+        stroke="#c77d95"
+        stroke-width="2"
+      />
+
+      <rect
+        x="40" y="48" width="80" height="10" rx="5"
+        fill="#fff5ec"
+        stroke="#c77d95"
+        stroke-width="2"
+      />
+
+      <g v-if="drink.toppings.includes('Boba Pearls')" fill="#65403d">
+        <circle cx="62" cy="126" r="7" />
+        <circle cx="80" cy="130" r="7" />
+        <circle cx="98" cy="125" r="7" />
+        <circle cx="71" cy="113" r="7" />
+        <circle cx="91" cy="111" r="7" />
+      </g>
+    </svg>
 
     <h3 class="text-xl font-semibold">{{ drink.flavor }}</h3>
-    <p class="text-gray-500">{{ drink.size }}</p>
-    <p class="text-gray-500">{{ drink.sweetness }} Sweetness</p>
-    <p class="text-gray-500">{{ drink.ice }}</p>
+    <p>{{ drink.size }}</p>
+    <p>{{ drink.sweetness }} Sweetness</p>
+    <p>{{ drink.ice }}</p>
 
     <p class="mt-3">
       {{ drink.toppings.join(', ') || 'No toppings' }}

@@ -38,11 +38,27 @@ const flavorColors: Record<string, string> = {
       />
 
       <g v-if="drink.toppings.includes('Boba Pearls')" fill="#65403d">
-        <circle cx="62" cy="126" r="7" />
-        <circle cx="80" cy="130" r="7" />
-        <circle cx="98" cy="125" r="7" />
-        <circle cx="71" cy="113" r="7" />
-        <circle cx="91" cy="111" r="7" />
+        <circle cx="62" cy="126" r="6" />
+        <circle cx="80" cy="130" r="6" />
+        <circle cx="98" cy="125" r="6" />
+        <circle cx="71" cy="113" r="6" />
+        <circle cx="91" cy="113" r="6" />
+      </g>
+
+      <g v-if="drink.toppings.includes('Popping Boba')" fill="#f6b34f">
+        <circle cx="60" cy="99" r="6" />
+        <circle cx="82" cy="99" r="6" />
+        <circle cx="100" cy="94" r="6" />
+
+        <circle cx="58" cy="97" r="2" fill="#ffe7b0" />
+        <circle cx="80" cy="97" r="2" fill="#ffe7b0" />
+        <circle cx="98" cy="92" r="2" fill="#ffe7b0" />
+      </g>
+
+      <g v-if="drink.toppings.includes('Jelly')" fill="#b6dda7" stroke="#8ab980">
+        <rect x="56" y="72" width="11" height="10" rx="2" />
+        <rect x="80" y="78" width="11" height="10" rx="2" />
+        <rect x="95" y="64" width="11" height="10" rx="2" />
       </g>
     </svg>
 
@@ -56,3 +72,4 @@ const flavorColors: Record<string, string> = {
     </p>
   </div>
 </template>
+
